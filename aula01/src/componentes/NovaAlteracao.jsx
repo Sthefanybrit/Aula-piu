@@ -19,4 +19,4 @@ function NovaAlteracao() {
     );
 }
 
-export default NovaAlteracao;
+export default NovaAlteracao
