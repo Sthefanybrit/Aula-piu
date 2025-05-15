@@ -1,6 +1,5 @@
 import { useState } from "react"
 
-
 export default function Change(){
     //let valor=0
     //let [valor, setValor] = useState(0)
@@ -15,6 +14,12 @@ export default function Change(){
 
     return(
         <>
+
+        {/*<div>
+            <button onClick={() => setValor(valor+1)}>{valor}</button>
+        </div>*/}
+
+
         <div>
             <button onClick={sets}>{valor}Cliques</button>
             <p>{valor2}</p>
