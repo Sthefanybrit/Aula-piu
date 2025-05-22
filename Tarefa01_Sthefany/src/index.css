@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app.light {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.app.dark {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+}
+
+.card {
+  width: 150px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #ffffff40;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.detalhes {
+  text-align: center;
+  padding: 20px;
+}
+
+.imagem-detalhe {
+  width: 200px;
+  height: auto;
+  margin: 10px 0;
+}
+
+.tema {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.tema button {
+  padding: 8px 16px;
+  cursor: pointer;
+}

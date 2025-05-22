@@ -1,0 +1,33 @@
+body{
+  background-color: white;
+}
+
+
+.app.light {
+  background-color: white;
+  color: black;
+}
+
+.app.dark {
+  background-color: black;
+  color: white;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  cursor: pointer;
+  width: 150px;
+}
+
+.card img {
+  width: 100%;
+}
+
+.detalhes img {
+  width: 300px;
+}
