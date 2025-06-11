@@ -1,0 +1,41 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app.claro {
+  background-color: #f0f0f0;
+  color: #222;
+}
+
+.app.escuro {
+  background-color: #121212;
+  color: #fff;
+}
+
+.tarefa {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+}
+
+.tarefa.feita {
+  background-color: #d0ffd0;
+  text-decoration: line-through;
+}
+
+.botao-tema {
+  margin: 15px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.painel {
+  padding: 20px;
+}

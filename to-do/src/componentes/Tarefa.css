@@ -1,0 +1,14 @@
+.tarefa {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+  }
+  
+  .tarefa.feita {
+    background-color: #d0ffd0;
+    text-decoration: line-through;
+  }
+  
