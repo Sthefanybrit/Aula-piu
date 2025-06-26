@@ -1,5 +1,5 @@
+import '../App.css';
 import React, { useState } from 'react';
-import '../App.css';  // importe o CSS
 
 function ListaDeTarefas() {
   const [tarefa, setTarefa] = useState('');
@@ -17,6 +17,10 @@ function ListaDeTarefas() {
     }
   };
 
+  const handleReset = () => {
+    setTarefas([]);
+  };
+
   return (
     <div className="app-container">
       <h1>Lista de Tarefas</h1>
@@ -27,34 +31,34 @@ function ListaDeTarefas() {
           onChange={handleChange}
           placeholder="Digite uma tarefa"
         />
-        <button type="submit" onClick={handleSubmit}>
-          Adicionar
-        </button>
+        <button type="submit">Adicionar</button>
       </form>
 
-      {tarefas.length > 0 && (
-        <table>
-          <thead>
+    <table>
+        <tr>
+            <th></th>
+            <th>Tarefa</th>
+        </tr>
+        {tarefas.length === 0 ? (
             <tr>
-              <th>#</th>
-              <th>Tarefa</th>
+            <td></td>
+            <td></td>
             </tr>
-          </thead>
-          <tbody>
-            {tarefas.map((item, index) => (
-              <tr key={index}>
+        ) : (
+            tarefas.map((item, index) => (
+            <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{item}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </tr>
+            ))
+        )}
+    </table>
+
+      <button  id='limpar' type="button" onClick={handleReset} style={{ marginTop: '10px' }}>
+        Resetar
+      </button>
     </div>
   );
 }
 
 export default ListaDeTarefas;
-
-
-

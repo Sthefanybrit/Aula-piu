@@ -78,6 +78,10 @@ button {
   padding: 8px 12px;
   font-size: 16px;
   cursor: pointer;
+  background-color: rgb(13, 161, 70);
+}
+#limpar{
+  background-color: red;
 }
 
 table {
