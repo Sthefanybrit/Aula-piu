@@ -12,13 +12,34 @@ function ListaDeTarefas() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (tarefa.trim() !== '') {
-      setTarefas([...tarefas, tarefa]);
+      setTarefas([
+        ...tarefas,
+        { texto: tarefa, status: 'pendente' }
+      ]);
       setTarefa('');
     }
   };
 
   const handleReset = () => {
     setTarefas([]);
+  };
+
+  const alterarStatus = (index, novoStatus) => {
+    const novasTarefas = [...tarefas];
+    novasTarefas[index].status = novoStatus;
+    setTarefas(novasTarefas);
+  };
+
+  const moverTarefa = (index, direcao) => {
+    const novasTarefas = [...tarefas];
+    const novaPosicao = index + direcao;
+
+    if (novaPosicao >= 0 && novaPosicao < tarefas.length) {
+      const temp = novasTarefas[index];
+      novasTarefas[index] = novasTarefas[novaPosicao];
+      novasTarefas[novaPosicao] = temp;
+      setTarefas(novasTarefas);
+    }
   };
 
   return (
@@ -34,27 +55,65 @@ function ListaDeTarefas() {
         <button type="submit">Adicionar</button>
       </form>
 
-    <table>
-        <tr>
-            <th></th>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
             <th>Tarefa</th>
-        </tr>
-        {tarefas.length === 0 ? (
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tarefas.length === 0 ? (
             <tr>
-            <td></td>
-            <td></td>
+              <td colSpan="4">Nenhuma tarefa adicionada</td>
             </tr>
-        ) : (
+          ) : (
             tarefas.map((item, index) => (
-            <tr key={index}>
+              <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{item}</td>
-            </tr>
+                <td>{item.texto}</td>
+                <td>{item.status}</td>
+                <td>
+                  <button
+                    className="acao realizada"
+                    onClick={() => alterarStatus(index, 'realizada')}
+                  >
+                    ✅
+                  </button>
+                  <button
+                    className="acao nao-realizada"
+                    onClick={() => alterarStatus(index, 'não realizada')}
+                  >
+                    ❌
+                  </button>
+                  <button
+                    className="acao pendente"
+                    onClick={() => alterarStatus(index, 'pendente')}
+                  >
+                    ⏳
+                  </button>
+                  <button
+                    className="acao subir"
+                    onClick={() => moverTarefa(index, -1)}
+                  >
+                    ⬆️
+                  </button>
+                  <button
+                    className="acao descer"
+                    onClick={() => moverTarefa(index, 1)}
+                  >
+                    ⬇️
+                  </button>
+                </td>
+              </tr>
             ))
-        )}
-    </table>
+          )}
+        </tbody>
+      </table>
 
-      <button  id='limpar' type="button" onClick={handleReset} style={{ marginTop: '10px' }}>
+      <button id="limpar" type="button" onClick={handleReset} style={{ marginTop: '10px' }}>
         Resetar
       </button>
     </div>

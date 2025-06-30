@@ -106,3 +106,38 @@ td:first-child {
   text-align: center;
   width: 40px;
 }
+
+/* Estilo dos botões de ação */
+.acao {
+  border: none;
+  padding: 5px 8px;
+  margin: 0 2px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.acao.realizada {
+  background-color: #4caf50;
+  color: white;
+}
+
+.acao.nao-realizada {
+  background-color: #f44336;
+  color: white;
+}
+
+.acao.pendente {
+  background-color: #ff9800;
+  color: white;
+}
+
+.acao.subir {
+  background-color: #2196f3;
+  color: white;
+}
+
+.acao.descer {
+  background-color: #0d47a1;
+  color: white;
+}
