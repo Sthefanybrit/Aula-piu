@@ -69,18 +69,6 @@ function ListaDeTarefas() {
     return { cor: '#a78a69', texto: '🟢 Em dia' };
   };
 
-  const tarefasFiltradas = tarefas
-    .filter((t) => {
-      if (filtro === 'todas') return true;
-      if (filtro === 'com-prazo') return t.prazo !== null && t.prazo !== '';
-      return t.status === filtro;
-    })
-    .sort((a, b) => {
-      if (!a.prazo) return 1;
-      if (!b.prazo) return -1;
-      return new Date(a.prazo) - new Date(b.prazo);
-    });
-
   return (
     <div className="app-container">
       <h1>Lista de Tarefas</h1>
@@ -122,20 +110,27 @@ function ListaDeTarefas() {
           </tr>
         </thead>
         <tbody>
-          {tarefasFiltradas.length === 0 ? (
+          {tarefas.length === 0 ? (
             <tr>
               <td colSpan="5">Nenhuma tarefa encontrada</td>
             </tr>
           ) : (
-            tarefasFiltradas.map((item, index) => {
-              const indexOriginal = tarefas.indexOf(item);
+            tarefas.map((item, index) => {
               const statusVisual = verificarStatusVisual(item.prazo, item.status);
+
+              if (
+                (filtro === 'Concluída' && item.status !== 'Concluída') ||
+                (filtro === 'Não-concluída' && item.status !== 'Não-concluída') ||
+                (filtro === 'com-prazo' && (!item.prazo || item.prazo === ''))
+              ) {
+                return null;
+              }
+
               return (
-                <tr key={indexOriginal}>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    <span>{item.texto}</span>
-                    <br />
+                    <span>{item.texto}</span><br />
                     <small style={{ color: statusVisual.cor }}>{statusVisual.texto}</small>
                   </td>
                   <td>{item.prazo ? item.prazo : '-'}</td>
@@ -143,29 +138,31 @@ function ListaDeTarefas() {
                   <td>
                     <button
                       className="acao realizada"
-                      onClick={() => alterarStatus(indexOriginal, 'Concluída')}
+                      onClick={() => alterarStatus(index, 'Concluída')}
                       title="Marcar como concluída"
                     >
                       ✅
                     </button>
                     <button
                       className="acao nao-realizada"
-                      onClick={() => alterarStatus(indexOriginal, 'Não-concluída')}
+                      onClick={() => alterarStatus(index, 'Não-concluída')}
                       title="Marcar como não concluída"
                     >
                       ❌
                     </button>
                     <button
                       className="acao subir"
-                      onClick={() => moverTarefa(indexOriginal, -1)}
+                      onClick={() => moverTarefa(index, -1)}
                       title="Mover para cima"
+                      disabled={index === 0}
                     >
                       ⬆
                     </button>
                     <button
                       className="acao descer"
-                      onClick={() => moverTarefa(indexOriginal, 1)}
+                      onClick={() => moverTarefa(index, 1)}
                       title="Mover para baixo"
+                      disabled={index === tarefas.length - 1}
                     >
                       ⬇
                     </button>
