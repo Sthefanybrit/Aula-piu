@@ -1,0 +1,173 @@
+/* App.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  color: #333;
+
+  overflow: hidden; /* evita scroll da página */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  max-width: 960px;
+  width: 100%;
+  max-height: 90vh;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow-y: auto; /* scroll vertical quando necessário */
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-envio {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.formulario-envio input,
+.formulario-envio select {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  flex: 1 1 160px;
+  transition: border-color 0.3s;
+}
+
+.formulario-envio input:focus,
+.formulario-envio select:focus {
+  border-color: #3182ce;
+  outline: none;
+  background-color: #fff;
+}
+
+.formulario-envio button {
+  padding: 10px 20px;
+  background-color: #3182ce;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 3px 8px rgba(49, 130, 206, 0.6);
+  transition: background-color 0.3s ease;
+}
+
+.formulario-envio button:hover {
+  background-color: #2b6cb0;
+}
+
+.mensagem-sucesso {
+  color: #2f855a;
+  font-weight: 600;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.resetar-container {
+  margin-bottom: 30px;
+}
+
+.btn-resetar {
+  padding: 10px 24px;
+  background-color: #e53e3e;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(229, 62, 62, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+.btn-resetar:hover {
+  background-color: #9b2c2c;
+  box-shadow: 0 4px 14px rgba(155, 44, 44, 0.8);
+}
+
+.tabela-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+  margin-top: 20px;
+  width: auto;
+}
+
+.tabela {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+  padding: 16px 20px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tabela h3 {
+  color: #3182ce;
+  margin-bottom: 12px;
+  user-select: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: #3182ce;
+  color: white;
+  padding: 10px;
+  user-select: none;
+  border-radius: 6px 6px 0 0;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  word-break: break-word;
+}
+
+tbody tr:hover {
+  background-color: #ebf4ff;
+}
+
+.tabela tbody tr td[style] {
+  font-style: italic;
+  color: #777;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .tabela-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tabela {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
