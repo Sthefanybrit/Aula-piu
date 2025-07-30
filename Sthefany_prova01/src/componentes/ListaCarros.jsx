@@ -11,7 +11,7 @@ export default function ListaCarros() {
       <ul>
         {carros.map((carro) => (
           <li key={carro.id}>
-            {carro.modelo} - {carro.ano}
+            {carro.modelo} - {carro.cor}
           </li>
         ))}
       </ul>
